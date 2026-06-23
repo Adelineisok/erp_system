@@ -1,0 +1,17 @@
+<select id="warningList"
+        resultType="com.erp.erp_system.vo.StockVO">
+
+    SELECT
+    s.id,
+    p.name AS productName,
+    w.name AS warehouseName,
+    s.quantity,
+    s.warning_quantity AS warningQuantity
+    FROM stock s
+    LEFT JOIN product p
+    ON s.product_id = p.id
+    LEFT JOIN warehouse w
+    ON s.warehouse_id = w.id
+    WHERE s.quantity &lt;=s.warning_quantity
+
+</select>

@@ -1,0 +1,20 @@
+<select id="getById"
+        resultType="com.erp.erp_system.vo.PurchaseVO">
+
+    SELECT
+    p.id,
+    p.purchase_no,
+    s.name supplierName,
+    w.name warehouseName,
+    p.total_amount,
+    p.status,
+    p.operator,
+    p.create_time
+    FROM purchase p
+    LEFT JOIN supplier s
+    ON p.supplier_id=s.id
+    LEFT JOIN warehouse w
+    ON p.warehouse_id=w.id
+    WHERE p.id=#{id}
+
+</select>
